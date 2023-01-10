@@ -1,0 +1,14 @@
+---
+- hosts: prueba
+  gather_facts: False
+  become: True
+  remote_user: hperez
+  vars:
+    user: user1
+    passw: junior12345
+  tasks:
+    - name: copiar programa desde el host hasta el nodo
+      raw: scp hperez@192.168.56.119:/home/hperez/demo.jar /home/hperez/
+    - name: corremos el programa
+      raw: java -jar /home/hperez/demo.jar
+
